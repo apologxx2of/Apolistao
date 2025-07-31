@@ -1,8 +1,4 @@
 <?xml version="1.0" ?>
-<![CDATA[
-  Aqui pode ter texto com <tags> e & caracteres especiais sem quebrar o XML.
-  Até um <script>alert('Teste contra XSS')</script> que ficaria literal, não rodaria como código.
-]]>
 <noticias>
   
   
