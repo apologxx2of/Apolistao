@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <noticias>
   <item>
-    <titulo>Governo do Apolistão lança Cartão do Cidadão</titulo>
-    <data>2025-07-25</data>
-    <resumo>O novo cartão integrará benefícios sociais, identidade digital e acesso facilitado aos serviços públicos.</resumo>
-  </item>
-  <item>
     <titulo>Portal Unificado entra no ar com novos serviços</titulo>
     <data>2025-07-30</data>
     <resumo>Todos os serviços digitais agora estão integrados em um único sistema. Cidadãos já podem usar com CPF.</resumo>
-  </item>
-  <item>
-    <titulo>Apolistão lidera ranking de governo digital na região</titulo>
-    <data>2025-07-28</data>
-    <resumo>Com 92% dos serviços digitalizados, o país é destaque em tecnologia pública e inovação cívica.</resumo>
   </item>
 </noticias>
