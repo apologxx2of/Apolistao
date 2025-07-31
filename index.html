@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Governo do Apolistão</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Roboto, sans-serif;
+      margin: 0;
+      background: #e5e5e5;
+      color: #333;
+    }
+
+    .site {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border: 1px solid #ccc;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(to right, #336699, #2a5d88);
+      color: white;
+      padding: 20px;
+      border-bottom: 4px solid #224a70;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    nav {
+      background: #f4f4f4;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #2a5d88;
+      padding: 6px 12px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-weight: bold;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+
+    .section h2 {
+      font-size: 20px;
+      color: #2a5d88;
+    }
+
+    .noticia {
+      margin-bottom: 16px;
+    }
+
+    .noticia h3 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      color: #2a5d88;
+    }
+
+    .noticia small {
+      color: #777;
+    }
+
+    footer {
+      background: #f0f0f0;
+      text-align: center;
+      padding: 16px;
+      font-size: 13px;
+      color: #555;
+      border-top: 1px solid #ccc;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header>
+      <h1>Governo do Apolistão</h1>
+    </header>
+
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Serviços</a>
+      <a href="#">Notícias</a>
+      <a href="#">Contato</a>
+    </nav>
+
+    <main>
+      <div class="section">
+        <h2>Notícias do Apolistão</h2>
+        <div id="noticias">
+          <p>Carregando notícias...</p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      &copy; 2025 Governo do Apolistão — Todos os direitos reservados.
+    </footer>
+  </div>
+
+  <!-- JS para carregar notícias do XML -->
+  <script>
+    fetch('noticias.xml')
+      .then(response => response.text())
+      .then(data => {
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(data, "application/xml");
+        const items = xml.getElementsByTagName("item");
+
+        const container = document.getElementById("noticias");
+        container.innerHTML = "";
+
+        for (let i = 0; i < items.length; i++) {
+          const titulo = items[i].getElementsByTagName("titulo")[0].textContent;
+          const data = items[i].getElementsByTagName("data")[0].textContent;
+          const resumo = items[i].getElementsByTagName("resumo")[0].textContent;
+
+          const noticia = document.createElement("div");
+          noticia.className = "noticia";
+          noticia.innerHTML = `
+            <h3>${titulo}</h3>
+            <small>${data}</small>
+            <p>${resumo}</p>
+          `;
+          container.appendChild(noticia);
+        }
+      })
+      .catch(error => {
+        document.getElementById("noticias").innerHTML = "<p>Erro ao carregar notícias.</p>";
+      });
+  </script>
+</body>
+</html>
