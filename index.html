@@ -2,190 +2,287 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <title>Governo do Apolistão - Notícias e Serviços</title>
-  <meta name="description" content="Portal oficial do Governo do Apolistão com notícias, serviços e informações para você." />
+  <title>Portal de Notícias do Apolistão</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portal oficial de notícias do Governo do Apolistão" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LdXSJ4rAAAAAKK79KvOhd5Nou2ebB2g4auEQepH"></script>
+  <script>
+    grecaptcha.execute();
+    function onSubmit(token) {
+      document.getElementById("demo-form").submit();
+    }
+  </script>
+  <script>
+        var onSubmit = function(token) {
+          console.log('success!');
+        };
+
+        var onloadCallback = function() {
+          grecaptcha.render('submit', {
+            'sitekey' : '6LdXSJ4rAAAAAKK79KvOhd5Nou2ebB2g4auEQepH',
+            'callback' : onSubmit
+          });
+        };
+  </script>
+  
   <style>
-    body {
-      font-family: Roboto, sans-serif;
+    /* Reset simples */
+    * {
       margin: 0;
-      background: #e5e5e5;
-      color: #333;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .site {
-      max-width: 960px;
-      margin: 0 auto;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      border: 1px solid #ccc;
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f9fafb;
+      color: #222;
+      line-height: 1.5;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
     }
 
     header {
-      background: linear-gradient(to right, #336699, #2a5d88);
+      background-color: #003366;
       color: white;
-      padding: 20px;
-      border-bottom: 4px solid #224a70;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-
-    nav {
-      background: #f4f4f4;
-      padding: 10px 20px;
-      border-bottom: 1px solid #ccc;
+      padding: 15px 30px;
       display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+    header h1 {
+      font-weight: 600;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
     }
 
     nav a {
+      color: white;
       text-decoration: none;
-      color: #2a5d88;
-      padding: 6px 12px;
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      font-weight: bold;
+      margin-left: 20px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover, nav a:focus {
+      color: #66ccff;
+      outline: none;
+    }
+
+    /* Banner grande */
+    .banner {
+      position: relative;
+      width: 100%;
+      max-height: 350px;
+      overflow: hidden;
+      border-bottom: 4px solid #003366;
+    }
+    .banner img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      filter: brightness(0.75);
+      user-select: none;
+    }
+    .banner-text {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      color: white;
+      font-size: 2rem;
+      font-weight: 700;
+      max-width: 600px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+      user-select: none;
     }
 
     main {
       flex: 1;
-      padding: 20px;
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
     }
 
-    .section {
-      margin-bottom: 30px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 20px;
+    /* Grid das notícias */
+    .noticias-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+      gap: 24px;
     }
 
-    .section h2 {
-      font-size: 20px;
-      color: #2a5d88;
+    article.noticia {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+    }
+    article.noticia:hover {
+      box-shadow: 0 6px 20px rgba(0, 51, 102, 0.25);
     }
 
-    .noticia {
-      margin-bottom: 16px;
+    article.noticia img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      user-select: none;
     }
 
-    .noticia h3 {
-      margin: 0 0 4px;
-      font-size: 16px;
-      color: #2a5d88;
+    article.noticia .conteudo {
+      padding: 15px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
-    .noticia small {
-      color: #777;
+    article.noticia time {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 6px;
+      user-select: text;
+    }
+
+    article.noticia h2 {
+      font-size: 1.2rem;
+      color: #003366;
+      margin-bottom: 12px;
+      user-select: text;
+    }
+
+    article.noticia p {
+      flex: 1;
+      font-size: 1rem;
+      color: #444;
+      user-select: text;
     }
 
     footer {
-      background: #f0f0f0;
+      background: #003366;
+      color: white;
       text-align: center;
-      padding: 16px;
-      font-size: 13px;
-      color: #555;
-      border-top: 1px solid #ccc;
+      padding: 18px 0;
+      user-select: none;
+      margin-top: auto;
+      font-size: 0.9rem;
+    }
+  
+    #demo-form {
+      display: none;
     }
 
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
+    /* Responsividade */
+    @media (max-width: 480px) {
+      .banner-text {
+        font-size: 1.4rem;
+        max-width: 90%;
+        bottom: 20px;
+        left: 15px;
       }
-
-      nav a {
-        width: 100%;
-        text-align: center;
+      article.noticia img {
+        height: 140px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="site">
-    <header>
-      <h1>Governo do Apolistão</h1>
-    </header>
+  
+<form id="demo-form" action="?" method="POST">
+  <button class="g-recaptcha" data-sitekey="6LdXSJ4rAAAAAKK79KvOhd5Nou2ebB2g4auEQepH" data-callback="onSubmit"></button>
+  <br/>
+</form>
+<div class="g-recaptcha"
+  data-sitekey="6LdXSJ4rAAAAAKK79KvOhd5Nou2ebB2g4auEQepH"
+  data-callback="onSubmit"
+  data-size="invisible">
+</div>
 
-    <nav>
-      <a href="index">Início</a>
-      <a href="seo">Serviços</a>
-      <a href="index">Notícias</a>
-      <a href="contato">Contato</a>
-    </nav>
+<header role="banner">
+  <h1>Governo do Apolistão</h1>
+  <nav role="navigation" aria-label="Menu principal">
+    <a href="index">Início</a>
+    <a href="index">Notícias</a>
+    <a href="servicos">Serviços</a>
+    <a href="contato">Contato</a>
+  </nav>
+</header>
 
-    <main>
-      <div class="section">
-        <h2>Notícias do Apolistão</h2>
-        <div id="noticias">
-          <p>Carregando notícias...</p>
-        </div>
-      </div>
-    </main>
+<section class="banner" aria-label="Banner principal">
+  <img src="banner.jpg" alt="Capital do Apolistão" />
+  <div class="banner-text">Portal Oficial de Notícias do Apolistão</div>
+</section>
 
-    <footer>
-      &copy; 2025 Governo do Apolistão — Todos os direitos reservados.
-    </footer>
-  </div>
+<main role="main">
+  <h2 style="margin-bottom:20px; color:#003366;">Últimas Notícias</h2>
+  <section class="noticias-grid" id="noticias"></section>
+</main>
 
-  <!-- JS para carregar notícias do XML -->
-  <script>
-    fetch('noticias.xml')
-      .then(response => response.text())
-      .then(data => {
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(data, "application/xml");
-        const items = xml.getElementsByTagName("item");
+<footer role="contentinfo">
+  &copy; 2025 Governo do Apolistão — Todos os direitos reservados.
+</footer>
 
-        const container = document.getElementById("noticias");
-        container.innerHTML = "";
+<script>
+  // Função para formatar data para pt-BR (ex: 07/08/2025)
+  function formatarData(dataStr) {
+    const dt = new Date(dataStr);
+    if (isNaN(dt)) return dataStr;
+    return dt.toLocaleDateString('pt-BR');
+  }
 
-        for (let i = 0; i < items.length; i++) {
-          const titulo = items[i].getElementsByTagName("titulo")[0].textContent;
-          const data = items[i].getElementsByTagName("data")[0].textContent;
-          const resumo = items[i].getElementsByTagName("resumo")[0].textContent;
+  // Função para carregar notícias do arquivo noticias.xml
+  async function carregarNoticias() {
+    try {
+      const resposta = await fetch('noticias.xml');
+      if (!resposta.ok) throw new Error('Erro ao carregar notícias');
 
-          const noticia = document.createElement("div");
-          noticia.className = "noticia";
-          noticia.innerHTML = `
-            <h3>${titulo}</h3>
-            <small>${data}</small>
-            <p>${resumo}</p>
-          `;
-          container.appendChild(noticia);
-        }
-      })
-      .catch(error => {
-        document.getElementById("noticias").innerHTML = "<p>Erro ao carregar notícias.</p>";
+      const xmlText = await resposta.text();
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(xmlText, 'application/xml');
+      
+      const items = xml.querySelectorAll('item');
+      const container = document.getElementById('noticias');
+      container.innerHTML = ''; // Limpa o conteúdo antes de popular
+
+      items.forEach(item => {
+        const titulo = item.querySelector('titulo')?.textContent ?? 'Título não informado';
+        const data = item.querySelector('data')?.textContent ?? '';
+        const resumo = item.querySelector('resumo')?.textContent ?? '';
+        const imagem = item.querySelector('imagem')?.textContent ?? 'https://via.placeholder.com/400x250?text=Imagem+indisponível';
+        const link = item.querySelector('link')?.textContent ?? '#';
+
+        // Cria o elemento da notícia
+        const article = document.createElement('article');
+        article.classList.add('noticia');
+        article.innerHTML = `
+          <a href="${link}" target="_blank" rel="noopener noreferrer" aria-label="Leia a notícia: ${titulo}">
+            <img src="${imagem}" alt="Imagem da notícia: ${titulo}" />
+            <div class="conteudo">
+              <time datetime="${data}">${formatarData(data)}</time>
+              <h2>${titulo}</h2>
+              <p>${resumo}</p>
+            </div>
+          </a>
+        `;
+        container.appendChild(article);
       });
-  </script>
-  <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCY0kqdhZRoFmG-Uskuyeelo_Nntieedjc",
-    authDomain: "apolistao.firebaseapp.com",
-    projectId: "apolistao",
-    storageBucket: "apolistao.firebasestorage.app",
-    messagingSenderId: "457360132880",
-    appId: "1:457360132880:web:f2e41ffff1048232a33395",
-    measurementId: "G-PC05S0VSDZ"
-  };
+      if(items.length === 0) {
+        container.innerHTML = "<p>Nenhuma notícia disponível no momento.</p>";
+      }
+    } catch (err) {
+      console.error(err);
+      const container = document.getElementById('noticias');
+      container.innerHTML = "<p>Erro ao carregar notícias.</p>";
+    }
+  }
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  </script>
+  carregarNoticias();
+</script>
+
 </body>
 </html>
