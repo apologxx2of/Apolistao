@@ -266,7 +266,9 @@
   // Função para carregar notícias do arquivo noticias.xml
   async function carregarNoticias() {
     try {
-      const resposta = await fetch('noticias.xml');
+      const resposta = await fetch('noticias.xml?nocache=' + Date.now(), {
+        cache: 'no-store' // Evita usar cache do navegador
+      });
       if (!resposta.ok) throw new Error('Erro ao carregar notícias');
 
       const xmlText = await resposta.text();
@@ -284,7 +286,6 @@
         const imagem = item.querySelector('imagem')?.textContent ?? 'https://via.placeholder.com/400x250?text=Imagem+indisponível';
         const link = item.querySelector('link')?.textContent ?? '#';
 
-        // Cria o elemento da notícia
         const article = document.createElement('article');
         article.classList.add('noticia');
         article.innerHTML = `
@@ -300,7 +301,7 @@
         container.appendChild(article);
       });
 
-      if(items.length === 0) {
+      if (items.length === 0) {
         container.innerHTML = "<p>Nenhuma notícia disponível no momento.</p>";
       }
     } catch (err) {
@@ -310,8 +311,12 @@
     }
   }
 
+  // Primeira carga imediata
   carregarNoticias();
+
+  // Atualiza automaticamente a cada 3 segundos
+  setInterval(carregarNoticias, 3000);
 </script>
 
 </body>
-  </html>
+</html>
