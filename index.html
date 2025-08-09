@@ -13,6 +13,7 @@
         integrity="sha384-XXXXX"
         crossorigin="anonymous">
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/disable-right-click/1.0.0/disable-right-click.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
   <script>
     const safeHTML = DOMPurify.sanitize(userInput);
@@ -39,71 +40,18 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
   integrity="sha384-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   crossorigin="anonymous"></script>
-  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-Frame-Options" content="DENY"> 
   <script>
-(function() {
-    const rickrollURL = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-    const goRickroll = () => {
-        console.log("Copiando meu amigo...");
-    };
+(function(){
+    const dominioPermitido = "apolistao.netlify.app";
+    const hostAtual = window.location.hostname;
 
-    // Detecta cópia (Ctrl+C, cmd+c)
-    document.addEventListener('copy', function(e) {
-        e.preventDefault();
-        goRickroll();
-    });
-
-    // Detecta botão direito
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        goRickroll();
-    });
-
-    // Detecta toque longo no celular
-    let touchTime;
-    document.addEventListener('touchstart', function() {
-        touchTime = Date.now();
-    });
-    document.addEventListener('touchend', function() {
-        if (Date.now() - touchTime > 500) {
-            goRickroll();
-        }
-    });
-
-    // Detecta teclas F12 e atalhos de devtools
-    document.addEventListener('keydown', function(e) {
-        if (
-            e.key === "F12" || 
-            (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase()))
-        ) {
-            e.preventDefault();
-            goRickroll();
-        }
-    });
-
-    // Detecta devtools aberto via debugger e tempo
-    setInterval(function() {
-        const before = Date.now();
-        debugger;
-        const after = Date.now();
-        if (after - before > 100) {
-            goRickroll();
-        }
-    }, 1000);
-
-    // NOVO: Detecta seleção grande (texto copiado via seleção no celular/desktop)
-    document.addEventListener('selectionchange', () => {
-        const selection = window.getSelection();
-        if (!selection) return;
-        const selectedText = selection.toString().trim();
-        if (selectedText.length > 20) {
-            goRickroll();
-        }
-    });
-
+    if (!hostAtual.endsWith(dominioPermitido)) {
+        // Redireciona a aba inteira pro YouTube
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    }
 })();
-</script>
-  
+  </script>
   <style>
     /* Reset simples */
     * {
