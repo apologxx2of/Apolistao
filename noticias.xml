@@ -1,10 +1,11 @@
 <?xml version="1.0" ?>
 <noticias>
   <item>
-    <titulo>Apolista se Declara Independente</titulo>
+    <titulo>Apolistão se Declara Independente</titulo>
     <data>2025-07-30</data>
     <resumo>Apolistão se Declara Independente, Anunciado no Canal do youtube @apolistãogov
 Um link do Google Drive no Canal foi confirmado.</resumo>
     <imagem>https://apolistao.netlify.app/banner.jpg</imagem>
+    <link>#</link>
   </item>
 </noticias>
