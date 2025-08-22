@@ -41,6 +41,15 @@ body{font-family:'Open Sans',sans-serif;background:#f9fafb;color:#222;min-height
 a{text-decoration:none;}
 img{display:block;max-width:100%;height:auto;}
 
+/* deixa o badge transparente e pequeno */
+.grecaptcha-badge {
+    opacity: 0.0 !important; /* praticamente invisível */
+    visibility: hidden !important; /* opcional */
+    width: 1px !important;
+    height: 1px !important;
+    transition: none !important;
+}
+    
 /* ===== Cabeçalho ===== */
 header{background:#003366;color:white;padding:15px 2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;}
 header h1{font-weight:600;font-size:1.6rem;}
