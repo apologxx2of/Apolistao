@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <title>Portal de Notícias do Apolistão</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Portal oficial de notícias do Governo do Apolistão" />
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portal oficial de notícias do Governo do Apolistão">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.example.com/lib.js"
-        integrity="sha384-XXXXX"
-        crossorigin="anonymous">
-</script>
+<script src="https://cdn.example.com/lib.js" integrity="sha384-XXXXX" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/disable-right-click/1.0.0/disable-right-click.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
 <script>
@@ -21,86 +18,79 @@ const safeHTML = DOMPurify.sanitize(userInput);
 <script src="https://www.google.com/recaptcha/api.js?render=6LdXSJ4rAAAAAKK79KvOhd5Nou2ebB2g4auEQepH"></script>
 <script>
 grecaptcha.execute();
-function onSubmit(token) {
-    document.getElementById("demo-form").submit();
-}
+function onSubmit(token) { document.getElementById("demo-form").submit(); }
 </script>
 <script>
-var onSubmit = function(token) { console.log('success!'); };
-var onloadCallback = function() {
-    grecaptcha.render('submit', {
-        'sitekey' : '6LdXSJ4rAAAAAKK79KvOhd5Nou2ebB2g4auEQepH',
-        'callback' : onSubmit
-    });
-};
+var onSubmit = function(token){console.log('success!');};
+var onloadCallback = function(){grecaptcha.render('submit',{'sitekey':'6LdXSJ4rAAAAAKK79KvOhd5Nou2ebB2g4auEQepH','callback':onSubmit});};
 </script>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-integrity="sha384-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-crossorigin="anonymous"></script>
 <meta http-equiv="X-Frame-Options" content="DENY"> 
 <script>
 (function(){
     const dominioPermitido = "apolistao.netlify.app";
     const hostAtual = window.location.hostname;
-    if (!hostAtual.endsWith(dominioPermitido)) {
-        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    if(!hostAtual.endsWith(dominioPermitido)){
+        window.location.href="https://www.youtube.com/watch?v=dQw4w9WgXcQ";
     }
 })();
 </script>
 <style>
-/* ===== Reset básico ===== */
+/* ===== Reset ===== */
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Open Sans',sans-serif;background:#f9fafb;color:#222;line-height:1.5;min-height:100vh;display:flex;flex-direction:column;transition:background .3s,color .3s;}
+body{font-family:'Open Sans',sans-serif;background:#f9fafb;color:#222;min-height:100vh;display:flex;flex-direction:column;transition:background .3s,color .3s;}
 a{text-decoration:none;}
 img{display:block;max-width:100%;height:auto;}
-        
-.grecaptcha-badge {
-  opacity: 0.0 !important;
-}
-        
+
 /* ===== Cabeçalho ===== */
-header{background-color:#003366;color:white;padding:15px 30px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;}
-header h1{font-weight:600;font-size:1.8rem;letter-spacing:2px;}
-nav a{color:white;margin-left:20px;font-weight:600;transition:color .3s;}
+header{background:#003366;color:white;padding:15px 2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;}
+header h1{font-weight:600;font-size:1.6rem;}
+nav{display:flex;flex-wrap:wrap;gap:12px;}
+nav a{color:white;font-weight:600;transition:color .3s;}
 nav a:hover, nav a:focus, nav a.active{color:#66ccff;outline:none;}
 .toggle-dark{cursor:pointer;background:#fff;border:none;padding:6px 12px;border-radius:6px;font-weight:600;}
 
 /* ===== Banner ===== */
 .banner{position:relative;width:100%;max-height:350px;overflow:hidden;border-bottom:4px solid #003366;}
-.banner img{width:100%;height:350px;object-fit:cover;filter:brightness(0.75);}
-.banner-text{position:absolute;bottom:30px;left:30px;color:white;font-size:2rem;font-weight:700;max-width:600px;text-shadow:2px 2px 6px rgba(0,0,0,.7);transition:opacity .5s;}
+.banner img{width:100%;height:100%;object-fit:cover;filter:brightness(0.75);}
+.banner-text{position:absolute;bottom:20px;left:20px;color:white;font-size:1.8rem;font-weight:700;max-width:90%;text-shadow:2px 2px 6px rgba(0,0,0,.7);transition:opacity .5s;}
 
 /* ===== Main ===== */
-main{flex:1;max-width:1200px;margin:30px auto;padding:0 20px;}
-h2{margin-bottom:20px;color:#003366;}
-#busca{width:100%;max-width:400px;padding:10px;border:2px solid #003366;border-radius:6px;margin-bottom:20px;}
+main{flex:1;max-width:1200px;margin:2rem auto;padding:0 1rem;}
+h2{margin-bottom:1rem;color:#003366;}
+#busca{width:100%;max-width:400px;padding:10px;border:2px solid #003366;border-radius:6px;margin-bottom:1.5rem;}
 
-/* ===== Grid de notícias ===== */
-.noticias-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;}
+/* ===== Grid Notícias ===== */
+.noticias-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
 article.noticia{background:white;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.1);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .3s,transform .2s;}
 article.noticia:hover{box-shadow:0 6px 20px rgba(0,51,102,.25);transform:translateY(-3px);}
 article.noticia img{width:100%;height:180px;object-fit:cover;}
-article.noticia .conteudo{padding:15px 20px;flex:1;display:flex;flex-direction:column;}
-article.noticia time{font-size:.9rem;color:#666;margin-bottom:6px;}
-article.noticia h2{font-size:1.2rem;color:#003366;margin-bottom:12px;}
-article.noticia p{flex:1;font-size:1rem;color:#444;}
+article.noticia .conteudo{padding:1rem;flex:1;display:flex;flex-direction:column;}
+article.noticia time{font-size:.85rem;color:#666;margin-bottom:6px;}
+article.noticia h2{font-size:1.15rem;color:#003366;margin-bottom:10px;}
+article.noticia p{flex:1;font-size:.95rem;color:#444;}
 
 /* ===== Rodapé ===== */
-footer{background:#003366;color:white;text-align:center;padding:18px 0;margin-top:auto;font-size:.9rem;}
+footer{background:#003366;color:white;text-align:center;padding:1.5rem 1rem;margin-top:auto;font-size:.9rem;}
 footer a#link-privacidade{color:#ff6600;}
 footer a#link-privacidade:hover{color:#cc5200;text-decoration:underline;}
 footer .social-icons a{margin:0 5px;display:inline-block;}
 
-/* ===== Dark mode ===== */
+/* ===== Dark Mode ===== */
 body.dark{background:#111;color:#eee;}
 body.dark header, body.dark footer{background:#000033;}
 body.dark article.noticia{background:#222;}
 
 /* ===== Responsividade ===== */
+@media(max-width:768px){
+.banner-text{font-size:1.5rem;}
+nav a{margin-left:6px;font-size:.95rem;}
+article.noticia img{height:160px;}
+}
 @media(max-width:480px){
-.banner-text{font-size:1.4rem;max-width:90%;bottom:20px;left:15px;}
+header{flex-direction:column;align-items:flex-start;gap:10px;padding:15px;}
+.banner-text{font-size:1.2rem;bottom:15px;left:15px;}
 article.noticia img{height:140px;}
-nav a{margin-left:10px;font-size:.9rem;}
+#busca{width:100%;}
 }
 </style>
 </head>
@@ -123,7 +113,7 @@ nav a{margin-left:10px;font-size:.9rem;}
 </header>
 
 <section class="banner" aria-label="Banner principal">
-<img id="bannerImg" src="banner.jpg" alt="Capital do Apolistão" />
+<img id="bannerImg" src="banner.jpg" alt="Capital do Apolistão">
 <div class="banner-text" id="bannerText">Portal Oficial de Notícias do Apolistão</div>
 </section>
 
@@ -152,12 +142,8 @@ e aos <a href="https://policies.google.com/terms" id="link-privacidade">Termos d
 </footer>
 
 <script>
-// ===== Funções de notícias =====
-function formatarData(dataStr){
-const dt=new Date(dataStr);
-if(isNaN(dt))return dataStr;
-return dt.toLocaleDateString('pt-BR');
-}
+// ===== Funções notícias =====
+function formatarData(dataStr){const dt=new Date(dataStr);if(isNaN(dt))return dataStr;return dt.toLocaleDateString('pt-BR');}
 async function carregarNoticias(){
 try{
 const resposta=await fetch('noticias.xml?nocache='+Date.now(),{cache:'no-store'});
@@ -166,32 +152,26 @@ const xmlText=await resposta.text();
 const parser=new DOMParser();
 const xml=parser.parseFromString(xmlText,'application/xml');
 const items=xml.querySelectorAll('item');
-const container=document.getElementById('noticias');
-container.innerHTML='';
+const container=document.getElementById('noticias');container.innerHTML='';
 items.forEach(item=>{
 const titulo=item.querySelector('titulo')?.textContent ?? 'Título não informado';
 const data=item.querySelector('data')?.textContent ?? '';
 const resumo=item.querySelector('resumo')?.textContent ?? '';
 const imagem=item.querySelector('imagem')?.textContent ?? 'https://via.placeholder.com/400x250?text=Imagem+indisponível';
 const link=item.querySelector('link')?.textContent ?? '#';
-const article=document.createElement('article');
-article.classList.add('noticia');
-article.innerHTML=`
-<a href="${link}" target="_blank" rel="noopener noreferrer" aria-label="Leia a notícia: ${titulo}">
-<img src="${imagem}" alt="Imagem da notícia: ${titulo}" />
+const article=document.createElement('article');article.classList.add('noticia');
+article.innerHTML=`<a href="${link}" target="_blank" rel="noopener noreferrer" aria-label="Leia a notícia: ${titulo}">
+<img src="${imagem}" alt="Imagem da notícia: ${titulo}"/>
 <div class="conteudo">
 <time datetime="${data}">${formatarData(data)}</time>
 <h2>${titulo}</h2>
 <p>${resumo}</p>
-</div>
-</a>`;
-container.appendChild(article);
+</div></a>`;container.appendChild(article);
 });
 if(items.length===0){container.innerHTML="<p>Nenhuma notícia disponível no momento.</p>";}
 }catch(err){console.error(err);document.getElementById('noticias').innerHTML="<p>Erro ao carregar notícias.</p>";}
 }
-carregarNoticias();
-setInterval(carregarNoticias,3000);
+carregarNoticias();setInterval(carregarNoticias,3000);
 
 // ===== Busca =====
 document.getElementById('busca').addEventListener('input',function(){
@@ -212,17 +192,9 @@ localStorage.setItem('dark',document.body.classList.contains('dark'));
 });
 
 // ===== Banner rotativo =====
-const banners=[
-{img:'banner.jpg',txt:'Portal Oficial de Notícias do Apolistão'},
-{img:'banner2.jpg',txt:'Capital do Apolistão'},
-{img:'banner3.jpg',txt:'Serviços digitais para o cidadão'}
-];
+const banners=[{img:'banner.jpg',txt:'Portal Oficial de Notícias do Apolistão'},{img:'banner2.jpg',txt:'Capital do Apolistão — Orgulho e Tradição'},{img:'banner3.jpg',txt:'Serviços digitais para o cidadão'}];
 let i=0;
-setInterval(()=>{
-i=(i+1)%banners.length;
-document.getElementById('bannerImg').src=banners[i].img;
-document.getElementById('bannerText').textContent=banners[i].txt;
-},5000);
+setInterval(()=>{i=(i+1)%banners.length;document.getElementById('bannerImg').src=banners[i].img;document.getElementById('bannerText').textContent=banners[i].txt;},5000);
 </script>
 
 </body>
