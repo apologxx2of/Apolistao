@@ -215,7 +215,7 @@ localStorage.setItem('dark',document.body.classList.contains('dark'));
 });
 
 // ===== Banner rotativo =====
-const banners=[{img:'banner.jpg',txt:'Portal Oficial de Notícias do Apolistão'},{img:'banner2.jpg',txt:'Capital do Apolistão — Orgulho e Tradição'},{img:'banner3.jpg',txt:'Serviços digitais para o cidadão'}];
+const banners=[{img:'banner.jpg',txt:'Portal Oficial de Notícias do Apolistão'},{img:'banner2.jpg',txt:'Sede do Apolistão'},{img:'banner3.jpg',txt:'Serviços digitais para o cidadão'}];
 let i=0;
 setInterval(()=>{i=(i+1)%banners.length;document.getElementById('bannerImg').src=banners[i].img;document.getElementById('bannerText').textContent=banners[i].txt;},5000);
 </script>
