@@ -132,7 +132,7 @@ article.noticia img{height:140px;}
   <a href="servicos">Serviços</a>
   <a href="contato">Contato</a>
 </nav>
-<button class="toggle-dark" id="btnDark">🌙</button>
+<button class="toggle-dark" id="btnDark">N</button>
 </header>
 
 <section class="banner" aria-label="Banner principal">
@@ -153,8 +153,8 @@ Este site é protegido pelo reCAPTCHA e está sujeito à
 e aos <a href="https://policies.google.com/terms" id="link-privacidade">Termos de Serviço</a> do Google.
 <div style="margin-top:10px;">
 <a href="index" style="margin:0 8px;color:#fff;">Início</a>|
-<a href="servicos" style="margin:0 8px;color:#fff;">Serviços</a>|
-<a href="contato" style="margin:0 8px;color:#fff;">Contato</a>
+<a href="ssa.html" style="margin:0 8px;color:#fff;">Saúde</a>|
+<a href="contato.html" style="margin:0 8px;color:#fff;">Contato</a>
 </div>
 <div class="social-icons" style="margin-top:10px;">
 <a href="#" aria-label="Twitter"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" width="20"></a>
@@ -207,10 +207,10 @@ n.style.display=txt.includes(termo)?'block':'none';
 
 // ===== Dark mode =====
 const btnDark=document.getElementById('btnDark');
-if(localStorage.getItem('dark')==='true'){document.body.classList.add('dark');btnDark.textContent='☀️';}
+if(localStorage.getItem('dark')==='true'){document.body.classList.add('dark');btnDark.textContent='S';}
 btnDark.addEventListener('click',()=>{
 document.body.classList.toggle('dark');
-btnDark.textContent=document.body.classList.contains('dark')?'☀️':'🌙';
+btnDark.textContent=document.body.classList.contains('dark')?'S':'N';
 localStorage.setItem('dark',document.body.classList.contains('dark'));
 });
 
