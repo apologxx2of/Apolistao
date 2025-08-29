@@ -1,0 +1,193 @@
+/* =========================
+   Reset básico
+========================= */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #111;
+    line-height: 1.5;
+}
+
+/* =========================
+   Remove efeito azul ao clicar
+========================= */
+a, button {
+    outline: none;
+}
+
+a:focus, button:focus {
+    outline: none;
+}
+
+/* =========================
+   Navbar simples
+========================= */
+nav {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* =========================
+   Hamburger (mobile)
+========================= */
+nav .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+nav .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+}
+
+/* =========================
+   Hero Section
+========================= */
+section.hero {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+section.hero h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+section.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+section.hero a {
+    background-color: #fff;
+    color: #3498db;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.3rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* =========================
+   Features
+========================= */
+section.features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 3rem 2rem;
+}
+
+section.features .card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.3rem;
+    border: 1px solid #ccc;
+}
+
+section.features .card i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #3498db;
+}
+
+section.features .card h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+section.features .card p {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* =========================
+   Footer
+========================= */
+footer {
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    font-size: 0.9rem;
+}
+
+/* =========================
+   Responsividade
+========================= */
+@media (min-width: 768px) {
+    section.features {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    nav .hamburger {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        display: none;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav .hamburger {
+        display: flex;
+    }
+}
+
+/* Cards invisíveis inicialmente */
+section.features .card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.3rem;
+    border: 1px solid #ccc;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-out;
+}
+
+/* Classe para mostrar cards com animação */
+section.features .card.show {
+    opacity: 1;
+    transform: translateY(0);
+}

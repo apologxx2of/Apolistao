@@ -1,0 +1,192 @@
+/* =========================
+   Reset e tipografia
+========================= */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+/* =========================
+   Remove outlines feios
+========================= */
+a, button, input {
+    outline: none;
+}
+
+a:focus, button:focus, input:focus {
+    outline: none;
+}
+
+/* =========================
+   Navbar
+========================= */
+nav {
+    background-color: #2c3e50;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+nav .logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+nav .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+}
+
+/* =========================
+   Hero / Header - Full width
+========================= */
+.hero {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    padding: 6rem 2rem;
+    width: 100%;    /* ocupa toda largura da tela */
+    margin: 0;      /* remove margens centrais */
+    border-radius: 0; /* quadrado */
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.hero input[type="text"] {
+    width: 70%;
+    max-width: 400px;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    border-radius: 0; /* quadrado */
+}
+
+.hero button {
+    padding: 0.8rem 1.5rem;
+    margin-left: 0.5rem;
+    border: none;
+    background-color: #2c3e50;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0; /* quadrado */
+    transition: all 0.2s ease;
+}
+
+.hero button:hover {
+    background-color: #1a252f;
+}
+
+/* =========================
+   Área de respostas
+========================= */
+#consultaResposta {
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: #111;
+    min-height: 1.5rem;
+}
+
+/* Cards de resposta (opcional) */
+.card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-out;
+    border-radius: 0; /* quadrado */
+}
+
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   Footer
+========================= */
+footer {
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    font-size: 0.9rem;
+    margin-top: 3rem;
+    border-radius: 0; /* quadrado */
+}
+
+/* =========================
+   Responsividade
+========================= */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        display: none;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav .hamburger {
+        display: flex;
+    }
+
+    .hero {
+        padding: 4rem 1rem; /* hero continua full width */
+    }
+
+    .hero input[type="text"] {
+        width: 100%;   /* ocupa 100% do espaço disponível */
+        margin-bottom: 0.5rem;
+    }
+
+    .hero button {
+        width: 100%;   /* ocupa 100% abaixo do input */
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+}

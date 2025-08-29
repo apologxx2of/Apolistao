@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSA - Sistema de Saúde de Apolistão</title>
+
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- CDN Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CDN jQuery (opcional para JS rápido) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-3gJwYp3s5G6FqVJ2JZ0BCN5x6SjwzVQq4mB3b6D7m1I=" crossorigin="anonymous"></script>
+
+  <!-- CDN Axios para requisições seguras -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- CSP Meta Tag para segurança -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://code.jquery.com; style-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com;">
+
+  <!-- Segurança extra -->
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">SSA</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="agendamento.html">Agendamento</a></li>
+      <li><a href="consulta.html">Consulta</a></li>
+      <li><a href="index.html">Notícias</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Bem-vindo ao SSA</h1>
+    <p>Sistema de Saúde de Apolistão - Informação e agendamento ao seu alcance.</p>
+    <a href="#">Agende sua Consulta</a>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="card">
+      <i class="fas fa-notes-medical"></i>
+      <h2>Histórico Médico</h2>
+      <p>Tenha acesso completo ao seu histórico de consultas e exames.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-calendar-check"></i>
+      <h2>Agendamento Online</h2>
+      <p>Marque consultas sem filas ou burocracias.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-hospital"></i>
+      <h2>Hospitais Integrados</h2>
+      <p>Encontre hospitais e clínicas próximas de forma prática.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 SSA - Sistema de Saúde de Apolistão</p>
+    <p>Ministério da Saúde - Todos os direitos reservados</p>
+  </footer>
+
+  <!-- Responsive JS -->
+  <script src="responsive.js"></script>
+</body>
+</html>

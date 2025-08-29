@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<respostas>
+    <item>
+        <pergunta>horario de atendimento</pergunta>
+        <resposta>O SSA funciona de segunda a sexta, das 08:00 às 18:00.</resposta>
+    </item>
+    <item>
+        <pergunta>localização do hospital central</pergunta>
+        <resposta>O Hospital Central fica na Rua Principal, 123, Apolistão.</resposta>
+    </item>
+    <item>
+        <pergunta>como agendar consulta</pergunta>
+        <resposta>Você pode agendar sua consulta online pelo nosso site na seção "Agendamento".</resposta>
+    </item>
+    <item>
+        <pergunta>documentos necessários</pergunta>
+        <resposta>Leve RG, CPF e cartão do SSA ao se dirigir a qualquer unidade SSA.</resposta>
+    </item>
+    <item>
+        <pergunta>emergência</pergunta>
+        <resposta>Em caso de emergência, ligue 192 ou dirija-se ao hospital mais próximo imediatamente.</resposta>
+    </item>
+</respostas>

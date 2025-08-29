@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSA - Consulta</title>
+
+    <!-- Importa tudo via import.js -->
+    <script src="import.js" defer></script>
+    <script src="responsive.js"></script>
+</head>
+<body>
+
+    <!-- Navbar (precisa estar explícito, se quiser igual o SSA) -->
+    <nav>
+        <div class="logo">SSA</div>
+        <ul>
+            <li><a href="ssa.html">Home</a></li>
+            <li><a href="agendamentos.html">Agendamento</a></li>
+            <li><a href="consulta.html">Consulta</a></li>
+            <li><a href="index.html">Notícias</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <!-- Hero da Consulta -->
+    <section class="hero">
+        <h1>Consulta de Informações</h1>
+        <p>Digite sua dúvida sobre o SSA ou consultas disponíveis.</p>
+
+        <div class="consulta-form">
+            <input type="text" id="consultaInput" placeholder="Digite sua pergunta...">
+            <button id="consultaBtn">Consultar</button>
+        </div>
+
+        <div id="consultaResposta"></div>
+    </section>
+
+    <!-- Footer explícito -->
+    <footer>
+        <p>© 2025 SSA - Sistema de Saúde de Apolistão</p>
+        <p>Ministério da Saúde - Todos os direitos reservados</p>
+    </footer>
+
+</body>
+</html>
