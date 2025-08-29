@@ -19,15 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 let melhorMatch = null;
                 let maxPalavrasBatidas = 0;
 
+                // Procurar pelo item que tem mais palavras em comum
                 for (let i = 0; i < items.length; i++) {
                     const perguntaXML = items[i].getElementsByTagName("pergunta")[0].textContent.toLowerCase();
                     const palavrasInput = pergunta.split(/\s+/);
                     const palavrasXML = perguntaXML.split(/\s+/);
 
-                    // Contar quantas palavras batem
                     let count = 0;
-                    palavrasInput.forEach(p => {
-                        if (palavrasXML.includes(p)) count++;
+                    palavrasInput.forEach(palavra => {
+                        if (palavrasXML.includes(palavra)) count++;
                     });
 
                     if (count > maxPalavrasBatidas) {
@@ -36,9 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 }
 
-                if (melhorMatch) {
+                if (melhorMatch && maxPalavrasBatidas > 0) {
                     const resposta = melhorMatch.getElementsByTagName("resposta")[0].textContent;
                     respostaDiv.textContent = resposta;
+                    respostaDiv.classList.add("show"); // animação se quiser
                 } else {
                     respostaDiv.textContent = "Desculpe, não encontrei uma resposta para sua pergunta.";
                 }
