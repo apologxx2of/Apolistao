@@ -1,40 +1,41 @@
 const API = "https://governodoapolistao.pythonanywhere.com";
 let TOKEN = ""; // guarda o token do usuário
 
+// Função fetch global
 async function apiFetch(url, options = {}) {
+  if (!options.headers) options.headers = {};
+  options.headers["Content-Type"] = "application/json";
+
+  // Só adiciona token se tiver e não for registrar/login
+  if (TOKEN && !["/registrar", "/login"].includes(url)) {
+    options.headers["Authorization"] = `Bearer ${TOKEN}`;
+  }
+
+  console.log("Tentando fetch:", `${API}${url}`);
+  console.log("Payload enviado:", options.body);
+
   try {
-    if (!options.headers) options.headers = {};
-
-    // Só adiciona token se tiver e não for registrar/login
-    if (TOKEN && !["/registrar", "/login"].includes(url)) {
-      options.headers["Authorization"] = `Bearer ${TOKEN}`;
-    }
-
-    console.log("Fetching:", `${API}${url}`, options);
-
-    let res = await fetch(`${API}${url}`, options);
-
-    console.log("Recebeu status:", res.status);
-
+    const res = await fetch(`${API}${url}`, options);
+    console.log("Status fetch:", res.status);
     return res;
   } catch (e) {
-    console.error("Falha no fetch:", e);
+    console.error("Erro no fetch:", e);
     throw e;
   }
 }
 
+// Registrar usuário
 async function registrar() {
   const username = document.getElementById("username").value;
   const senha = document.getElementById("senha").value;
 
   try {
-    let r = await apiFetch("/registrar", {
+    const r = await apiFetch("/registrar", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, senha })
     });
 
-    let data = await r.json();
+    const data = await r.json();
 
     if (!r.ok) {
       await login(username, senha);
@@ -50,15 +51,15 @@ async function registrar() {
   }
 }
 
+// Login
 async function login(username, senha) {
   try {
-    let r = await apiFetch("/login", {
+    const r = await apiFetch("/login", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, senha })
     });
 
-    let data = await r.json();
+    const data = await r.json();
 
     if (r.ok) {
       TOKEN = data.token;
@@ -71,6 +72,7 @@ async function login(username, senha) {
   }
 }
 
+// Entrar na home
 function entrarHome(username) {
   document.getElementById("auth-section").classList.add("hidden");
   document.getElementById("home-section").classList.remove("hidden");
@@ -79,11 +81,12 @@ function entrarHome(username) {
   verCodigo();
 }
 
+// Ver saldo
 async function verSaldo() {
   try {
-    let r = await apiFetch("/saldo");
+    const r = await apiFetch("/saldo");
     if (r.ok) {
-      let data = await r.json();
+      const data = await r.json();
       document.getElementById("saldo").innerText = data.saldo.toFixed(2) + " G$";
     }
   } catch (e) {
@@ -91,11 +94,12 @@ async function verSaldo() {
   }
 }
 
+// Ver código do usuário
 async function verCodigo() {
   try {
-    let r = await apiFetch("/vercodigo");
+    const r = await apiFetch("/vercodigo");
     if (r.ok) {
-      let data = await r.json();
+      const data = await r.json();
       document.getElementById("codigo_usuario").innerText = data.codigo;
     }
   } catch (e) {
@@ -103,18 +107,17 @@ async function verCodigo() {
   }
 }
 
+// Transferir
 async function transferir() {
   const codigo = document.getElementById("codigo").value;
   const valor = document.getElementById("valor").value;
 
   try {
-    let r = await apiFetch("/iniciartransferencia", {
+    const r = await apiFetch("/iniciartransferencia", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ codigo, valor })
     });
-
-    let data = await r.json();
+    const data = await r.json();
     msg(data.msg || data.erro);
     verSaldo();
   } catch (e) {
@@ -122,18 +125,17 @@ async function transferir() {
   }
 }
 
+// Reembolsar
 async function reembolsar() {
   const codigo = document.getElementById("codigo_reembolso").value;
   const valor = document.getElementById("valor_reembolso").value;
 
   try {
-    let r = await apiFetch("/reembolso", {
+    const r = await apiFetch("/reembolso", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ codigo, valor })
     });
-
-    let data = await r.json();
+    const data = await r.json();
     msg(data.msg || data.erro);
     verSaldo();
   } catch (e) {
@@ -141,10 +143,11 @@ async function reembolsar() {
   }
 }
 
+// Excluir conta
 async function excluirConta() {
   try {
-    let r = await apiFetch("/excluirconta", { method: "POST" });
-    let data = await r.json();
+    const r = await apiFetch("/excluirconta", { method: "POST" });
+    const data = await r.json();
     msg(data.msg || data.erro);
     document.getElementById("home-section").classList.add("hidden");
     document.getElementById("auth-section").classList.remove("hidden");
@@ -154,6 +157,7 @@ async function excluirConta() {
   }
 }
 
+// Mostrar mensagem
 function msg(text) {
   document.getElementById("msg").innerText = text;
 }
